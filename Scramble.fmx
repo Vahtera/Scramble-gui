@@ -38,10 +38,60 @@ object S: TS
       object MenuPlayers: TMenuItem
         Locked = True
         Text = 'Number of Players'
+        object MenuPlayer1: TMenuItem
+          Locked = True
+          Text = '1'
+          OnClick = MenuPlayer1Click
+        end
+        object MenuPlayer2: TMenuItem
+          Locked = True
+          Text = '2'
+          OnClick = MenuPlayer2Click
+        end
+        object MenuPlayer3: TMenuItem
+          Locked = True
+          Text = '3'
+          OnClick = MenuPlayer3Click
+        end
+        object MenuPlayer4: TMenuItem
+          Locked = True
+          Text = '4'
+          OnClick = MenuPlayer4Click
+        end
+        object MenuPlayer5: TMenuItem
+          Locked = True
+          Text = '5'
+          OnClick = MenuPlayer5Click
+        end
       end
       object MenuRounds: TMenuItem
         Locked = True
         Text = 'Number of Rounds'
+        object MenuRound1: TMenuItem
+          Locked = True
+          Text = '1'
+          OnClick = MenuRound1Click
+        end
+        object MenuRound2: TMenuItem
+          Locked = True
+          Text = '2'
+          OnClick = MenuRound2Click
+        end
+        object MenuRound3: TMenuItem
+          Locked = True
+          Text = '3'
+          OnClick = MenuRound3Click
+        end
+        object MenuRound4: TMenuItem
+          Locked = True
+          Text = '4'
+          OnClick = MenuRound4Click
+        end
+        object MenuRound5: TMenuItem
+          Locked = True
+          Text = '5'
+          OnClick = MenuRound5Click
+        end
       end
     end
     object MenuItem6: TMenuItem

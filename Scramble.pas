@@ -28,11 +28,31 @@ type
     LabelInfo: TLabel;
     Rectangle1: TRectangle;
     LabelRound: TLabel;
+    MenuPlayer1: TMenuItem;
+    MenuPlayer2: TMenuItem;
+    MenuPlayer3: TMenuItem;
+    MenuPlayer4: TMenuItem;
+    MenuPlayer5: TMenuItem;
+    MenuRound3: TMenuItem;
+    MenuRound2: TMenuItem;
+    MenuRound1: TMenuItem;
+    MenuRound5: TMenuItem;
+    MenuRound4: TMenuItem;
     procedure MenuExitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonRollClick(Sender: TObject);
     procedure ButtonSubmitClick(Sender: TObject);
     procedure ButtonHintClick(Sender: TObject);
+    procedure MenuPlayer1Click(Sender: TObject);
+    procedure MenuPlayer2Click(Sender: TObject);
+    procedure MenuPlayer3Click(Sender: TObject);
+    procedure MenuPlayer4Click(Sender: TObject);
+    procedure MenuPlayer5Click(Sender: TObject);
+    procedure MenuRound4Click(Sender: TObject);
+    procedure MenuRound1Click(Sender: TObject);
+    procedure MenuRound2Click(Sender: TObject);
+    procedure MenuRound3Click(Sender: TObject);
+    procedure MenuRound5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -114,31 +134,6 @@ begin
   // SetString(Result, PChar(@Chars[0]), Length(Chars));
 end;
 
-procedure EndGame();
-var
-  message: string;
-  I: Integer;
-begin
-  message := 'Final scores:' + sLineBreak + sLineBreak;
-  for I := 1 to NumPlayers do
-    begin
-      message := message + 'Player ' + IntToStr(I) + ': ' + IntToStr(PlayerScores[I-1]) + sLineBreak;
-    end;
-  ShowMessage(message);
-  S.LabelPoints.Text := 'Points: -';
-  S.LabelTurns.Text := 'Turn - / -';
-  S.LabelPlayer.Text := 'Player: - / -';
-  S.LabelRound.Text := 'Round: - / -';
-  S.LabelWordDisplay.Text := 'Press Start to play.';
-  S.EditAnswer.Text := '';
-  S.ButtonRoll.Enabled := True;
-  S.ButtonSubmit.Enabled := False;
-  S.ButtonHint.Enabled := False;
-  CurrentRound := 1;
-  CurrentPlayer := 1;
-  CurrentTurn := 0;
-end;
-
 procedure ShowPoints();
 begin
   S.LabelPoints.Text := 'Points: ' + IntToStr(Points);
@@ -166,6 +161,55 @@ begin
   Points := Length(Answer);
 end;
 
+procedure StartRound();
+begin
+  CurrentRound := 1;
+  CurrentPlayer := 1;
+  S.ButtonRoll.Enabled := False;
+  S.ButtonSubmit.Enabled := True;
+  S.ButtonHint.Enabled := True;
+  S.EditAnswer.Text := '';
+  ShowTurns;
+  DisplayWord;
+  ShowPoints;
+  ShowPlayers;
+end;
+
+procedure EndGame();
+var
+  message: string;
+  I: Integer;
+begin
+  if CurrentTurn = NumRounds then
+  begin
+    message := 'Final scores:' + sLineBreak + sLineBreak;
+    for I := 1 to NumPlayers do
+      begin
+        message := message + 'Player ' + IntToStr(I) + ': ' + IntToStr(PlayerScores[I-1]) + sLineBreak;
+      end;
+    ShowMessage(message);
+    S.LabelPoints.Text := 'Points: -';
+    S.LabelTurns.Text := 'Turn - / -';
+    S.LabelPlayer.Text := 'Player: - / -';
+    S.LabelRound.Text := 'Round: - / -';
+    S.LabelWordDisplay.Text := 'Press Start to play.';
+    S.EditAnswer.Text := '';
+    S.ButtonRoll.Enabled := True;
+    S.ButtonSubmit.Enabled := False;
+    S.ButtonHint.Enabled := False;
+    S.MenuSettings.Enabled := True;
+    CurrentRound := 1;
+    CurrentPlayer := 1;
+    CurrentTurn := 0;
+  end
+  else
+  begin
+    CurrentTurn := CurrentTurn + 1;
+    ShowMessage('Round ' + IntToStr(CurrentTurn) + ' of ' + IntToStr(NumRounds));
+    StartRound;
+  end;
+end;
+
 procedure RoundOver();
 begin
     Points := 0;
@@ -189,35 +233,12 @@ begin
 end;
 
 
-procedure StartRound();
-var
-  players, I: Integer;
-begin
-  players := NumPlayers - 1;
-  SetLength(PlayerScores, NumPlayers);
-
-  for I := 0 to players do
-  begin
-    PlayerScores[I] := 0;
-  end;
-
-  CurrentRound := 1;
-  CurrentPlayer := 1;
-  S.ButtonRoll.Enabled := False;
-  S.ButtonSubmit.Enabled := True;
-  S.ButtonHint.Enabled := True;
-  ShowTurns;
-  DisplayWord;
-  ShowPoints;
-  ShowPlayers;
-end;
-
 procedure StartTurn();
 begin
   if CurrentTurn > NumRounds then
   EndGame
   else
-  CurrentTurn := CurrentTurn + 1;
+  //CurrentTurn := CurrentTurn + 1;
   StartRound();
 end;
 
@@ -247,9 +268,20 @@ begin
 end;
 
 procedure TS.ButtonRollClick(Sender: TObject);
+var
+  players, I: Integer;
 begin
+  S.MenuSettings.Enabled := False;
+  players := NumPlayers - 1;
+  SetLength(PlayerScores, NumPlayers);
+
+  for I := 0 to players do
+  begin
+    PlayerScores[I] := 0;
+  end;
+
   S.LabelInfo.Text := 'Player 1 turn.';
-  CurrentTurn := 0;
+  CurrentTurn := 1;
   StartTurn();
 end;
 
@@ -295,12 +327,76 @@ begin
   S.ButtonHint.Enabled := False;
   S.ClientWidth := 640;
   S.ClientHeight := 190;
-  S.LabelWordDisplay.Text := 'Scramble'+ sLineBreak + 'Copyright (c) 2025 Anna Vahtera.';
+  S.LabelWordDisplay.Text := 'Scramble';
+  ShowPlayers;
+  ShowTurns;
+  ShowPoints;
+
 end;
 
 procedure TS.MenuExitClick(Sender: TObject);
 begin
   Application.Terminate;
+end;
+
+procedure TS.MenuRound1Click(Sender: TObject);
+begin
+  NumRounds := 1;
+  ShowTurns;
+end;
+
+procedure TS.MenuRound2Click(Sender: TObject);
+begin
+  NumRounds := 2;
+  ShowTurns;
+end;
+
+procedure TS.MenuRound3Click(Sender: TObject);
+begin
+  NumRounds := 3;
+  ShowTurns;
+end;
+
+procedure TS.MenuRound4Click(Sender: TObject);
+begin
+  NumRounds := 4;
+  ShowTurns;
+end;
+
+procedure TS.MenuRound5Click(Sender: TObject);
+begin
+  NumRounds := 5;
+  ShowTurns;
+end;
+
+procedure TS.MenuPlayer1Click(Sender: TObject);
+begin
+  NumPlayers := 1;
+  ShowPlayers;
+end;
+
+procedure TS.MenuPlayer2Click(Sender: TObject);
+begin
+  NumPlayers := 2;
+  ShowPlayers;
+end;
+
+procedure TS.MenuPlayer3Click(Sender: TObject);
+begin
+  NumPlayers := 3;
+  ShowPlayers;
+end;
+
+procedure TS.MenuPlayer4Click(Sender: TObject);
+begin
+  NumPlayers := 4;
+  ShowPlayers;
+end;
+
+procedure TS.MenuPlayer5Click(Sender: TObject);
+begin
+  NumPlayers := 5;
+  ShowPlayers;
 end;
 
 end.
