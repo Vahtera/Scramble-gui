@@ -1,0 +1,158 @@
+object S: TS
+  Left = 1316
+  Top = 403
+  BorderIcons = [biSystemMenu]
+  BorderStyle = Single
+  Caption = 'Scramble'
+  ClientHeight = 192
+  ClientWidth = 640
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  Left = 1316
+  Top = 403
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Position.X = 8.000000000000000000
+    Position.Y = 25.000000000000000000
+    Size.Width = 624.000000000000000000
+    Size.Height = 72.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+  end
+  object MainMenu1: TMainMenu
+    Left = 368
+    Top = 104
+    object MenuFile: TMenuItem
+      Text = '&File'
+      object MenuExit: TMenuItem
+        Locked = True
+        Text = 'E&xit Application'
+        OnClick = MenuExitClick
+      end
+    end
+    object MenuSettings: TMenuItem
+      Text = '&Settings'
+      object MenuPlayers: TMenuItem
+        Locked = True
+        Text = 'Number of Players'
+      end
+      object MenuRounds: TMenuItem
+        Locked = True
+        Text = 'Number of Rounds'
+      end
+    end
+    object MenuItem6: TMenuItem
+      Text = '&About'
+    end
+  end
+  object LabelWordDisplay: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 23.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 593.000000000000000000
+    Size.Height = 57.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 28.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Center
+    Text = 'Press '#39'Start'#39' to play!'
+    TabOrder = 3
+  end
+  object ButtonRoll: TButton
+    Position.X = 552.000000000000000000
+    Position.Y = 105.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Start'
+    TextSettings.Trimming = None
+    OnClick = ButtonRollClick
+  end
+  object EditAnswer: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 6
+    Text = 'LabelWordDisplay'
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Position.X = 8.000000000000000000
+    Position.Y = 105.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Family, FontColor]
+  end
+  object ButtonSubmit: TButton
+    Position.X = 193.000000000000000000
+    Position.Y = 105.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'Submit'
+    TextSettings.Trimming = None
+    OnClick = ButtonSubmitClick
+  end
+  object ButtonHint: TButton
+    Position.X = 281.000000000000000000
+    Position.Y = 105.000000000000000000
+    Size.Width = 80.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = 'Hint'
+    TextSettings.Trimming = None
+    OnClick = ButtonHintClick
+  end
+  object LabelPoints: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 89.000000000000000000
+    Position.Y = -2.000000000000000000
+    Size.Width = 88.000000000000000000
+    Size.Height = 26.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Points: 999'
+    TabOrder = 12
+  end
+  object LabelTurns: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 169.000000000000000000
+    Position.Y = -1.000000000000000000
+    Size.Width = 72.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Turn: 9 / 9'
+    TabOrder = 10
+  end
+  object LabelPlayer: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = -1.000000000000000000
+    Size.Width = 88.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Player: 99'
+    TabOrder = 11
+  end
+  object LabelInfo: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = 165.000000000000000000
+    Size.Width = 209.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 16.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Ready. Press Start to play.'
+    TabOrder = 14
+  end
+end

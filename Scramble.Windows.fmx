@@ -1,0 +1,49 @@
+inherited S_Windows: TS_Windows
+  Left = 1370
+  Top = 524
+  ClientHeight = 190
+  Left = 1370
+  Top = 524
+  DesignerMasterStyle = 0
+  inherited Panel1: TPanel
+    Position.Y = 26.000000000000000000
+  end
+  inherited MainMenu1: TMainMenu
+    Left = 616
+    Top = 1
+  end
+  inherited LabelWordDisplay: TLabel
+    Position.Y = 33.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited ButtonRoll: TButton
+    Position.Y = 149.000000000000000000
+  end
+  inherited EditAnswer: TEdit
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Position.Y = 106.000000000000000000
+  end
+  inherited ButtonSubmit: TButton
+    Position.Y = 106.000000000000000000
+  end
+  inherited ButtonHint: TButton
+    Position.Y = 106.000000000000000000
+  end
+  inherited LabelPoints: TLabel
+    Position.Y = -1.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Points: -'
+  end
+  inherited LabelTurns: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Turn: - / -'
+  end
+  inherited LabelPlayer: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Player: -'
+  end
+  inherited LabelInfo: TLabel
+    Size.Width = 536.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+end
