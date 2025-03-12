@@ -60,6 +60,8 @@
 # Delphi Compiled files
 Win64/
 Win32/
+OSX64/
+OSXARM64/
 
 # Delphi history and backups
 __history/
