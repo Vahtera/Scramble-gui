@@ -57,6 +57,9 @@
 *.tvsconfig
 *.dsk
 
+# Delphi Compiled files
+Win64/
+
 # Delphi history and backups
 __history/
 __recovery/
