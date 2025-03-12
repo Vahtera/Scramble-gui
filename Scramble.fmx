@@ -20,7 +20,7 @@ object S: TS
     Size.Width = 624.000000000000000000
     Size.Height = 72.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 13
+    TabOrder = 14
   end
   object MainMenu1: TMainMenu
     Left = 368
@@ -109,7 +109,7 @@ object S: TS
   end
   object LabelPoints: TLabel
     StyledSettings = [Family, FontColor]
-    Position.X = 89.000000000000000000
+    Position.X = 170.000000000000000000
     Position.Y = -2.000000000000000000
     Size.Width = 88.000000000000000000
     Size.Height = 26.000000000000000000
@@ -117,11 +117,11 @@ object S: TS
     TextSettings.Font.Size = 14.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Points: 999'
-    TabOrder = 12
+    TabOrder = 13
   end
   object LabelTurns: TLabel
     StyledSettings = [Family, FontColor]
-    Position.X = 169.000000000000000000
+    Position.X = 250.000000000000000000
     Position.Y = -1.000000000000000000
     Size.Width = 72.000000000000000000
     Size.Height = 25.000000000000000000
@@ -133,7 +133,7 @@ object S: TS
   end
   object LabelPlayer: TLabel
     StyledSettings = [Family, FontColor]
-    Position.X = 8.000000000000000000
+    Position.X = 89.000000000000000000
     Position.Y = -1.000000000000000000
     Size.Width = 88.000000000000000000
     Size.Height = 25.000000000000000000
@@ -141,7 +141,7 @@ object S: TS
     TextSettings.Font.Size = 14.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Player: 99'
-    TabOrder = 11
+    TabOrder = 12
   end
   object Rectangle1: TRectangle
     Align = MostBottom
@@ -160,6 +160,18 @@ object S: TS
     TextSettings.Font.Size = 16.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Ready. Press Start to play.'
-    TabOrder = 14
+    TabOrder = 15
+  end
+  object LabelRound: TLabel
+    StyledSettings = [Family, FontColor]
+    Position.X = 8.000000000000000000
+    Position.Y = -1.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Round: 99'
+    TabOrder = 11
   end
 end

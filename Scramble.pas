@@ -27,6 +27,7 @@ type
     LabelPlayer: TLabel;
     LabelInfo: TLabel;
     Rectangle1: TRectangle;
+    LabelRound: TLabel;
     procedure MenuExitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonRollClick(Sender: TObject);
@@ -42,7 +43,7 @@ var
   S: TS;
   Words: TStringList;
   Language: string;
-  CurrentPlayer, CurrentRound, NumPlayers, NumRounds, Turns, Points, i, j, k, MaxPoints, Winner: Integer;
+  CurrentPlayer, CurrentRound, CurrentTurn, NumPlayers, NumRounds, Turns, Points, i, j, k, MaxPoints, Winner: Integer;
   PlayerScores: array of Integer;
   Answer, Scrambled, InputWord: string;
   LangText: array[0..1] of string = ('English', 'Finnish');
@@ -125,12 +126,16 @@ begin
   ShowMessage(message);
   S.LabelPoints.Text := 'Points: -';
   S.LabelTurns.Text := 'Turn - / -';
-  S.LabelPlayer.Text := 'Player: -';
+  S.LabelPlayer.Text := 'Player: - / -';
+  S.LabelRound.Text := 'Round: - / -';
   S.LabelWordDisplay.Text := 'Press Start to play.';
   S.EditAnswer.Text := '';
   S.ButtonRoll.Enabled := True;
   S.ButtonSubmit.Enabled := False;
   S.ButtonHint.Enabled := False;
+  CurrentRound := 1;
+  CurrentPlayer := 1;
+  CurrentTurn := 0;
 end;
 
 procedure ShowPoints();
@@ -141,11 +146,12 @@ end;
 procedure ShowTurns();
 begin
     S.LabelTurns.Text := 'Turn: ' + IntToStr(CurrentRound) + ' / ' + IntToStr(Turns);
+    S.LabelRound.Text := 'Round: ' + IntToStr(CurrentTurn)+ ' / ' + IntToStr(NumRounds);
 end;
 
 procedure ShowPlayers();
 begin
-  S.LabelPlayer.Text := 'Player: ' + IntToStr(CurrentPlayer);
+  S.LabelPlayer.Text := 'Player: ' + IntToStr(CurrentPlayer)+ ' / ' + IntToStr(NumPlayers);
 end;
 
 procedure DisplayWord();
@@ -164,13 +170,13 @@ begin
     Points := 0;
     CurrentRound := 1;
     CurrentPlayer := CurrentPlayer + 1;
-    ShowPlayers;
     if CurrentPlayer > NumPlayers then
     begin
       EndGame;
     end
     else
     begin
+      ShowPlayers;
       ShowMessage('Player ' + IntToStr(CurrentPlayer) + ' turn!');
       CurrentRound := 1;
       S.EditAnswer.Text := '';
@@ -180,6 +186,7 @@ begin
       ShowPoints;
     end;
 end;
+
 
 procedure StartRound();
 var
@@ -202,6 +209,15 @@ begin
   DisplayWord;
   ShowPoints;
   ShowPlayers;
+end;
+
+procedure StartTurn();
+begin
+  if CurrentTurn > NumRounds then
+  EndGame
+  else
+  CurrentTurn := CurrentTurn + 1;
+  StartRound();
 end;
 
 
@@ -232,7 +248,8 @@ end;
 procedure TS.ButtonRollClick(Sender: TObject);
 begin
   S.LabelInfo.Text := 'Player 1 turn.';
-  StartRound();
+  CurrentTurn := 0;
+  StartTurn();
 end;
 
 procedure TS.ButtonSubmitClick(Sender: TObject);
@@ -270,6 +287,7 @@ begin
   Turns := 3;
   Points := 5;
   NumPlayers := 2;
+  NumRounds := 2;
   LoadWords(Language + '.lst');
   S.EditAnswer.Text := '';
   S.ButtonSubmit.Enabled := False;

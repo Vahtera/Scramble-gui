@@ -10,8 +10,8 @@ inherited S_Windows: TS_Windows
     Position.Y = 26.000000000000000000
   end
   inherited MainMenu1: TMainMenu
-    Left = 616
-    Top = 1
+    Left = 512
+    Top = 105
   end
   inherited LabelWordDisplay: TLabel
     Position.Y = 33.000000000000000000
@@ -31,17 +31,23 @@ inherited S_Windows: TS_Windows
     Position.Y = 106.000000000000000000
   end
   inherited LabelPoints: TLabel
+    Position.X = 544.000000000000000000
     Position.Y = -1.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
-    Text = 'Points: -'
+    TextSettings.HorzAlign = Trailing
+    Text = 'Points: 99'
   end
   inherited LabelTurns: TLabel
+    Position.X = 217.000000000000000000
+    Size.Width = 96.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
-    Text = 'Turn: - / -'
+    Text = 'Turn: 99 / 99'
   end
   inherited LabelPlayer: TLabel
+    Position.X = 113.000000000000000000
+    Size.Width = 104.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
-    Text = 'Player: -'
+    Text = 'Player: 99 / 99'
   end
   inherited Rectangle1: TRectangle
     Position.Y = 145.000000000000000000
@@ -50,5 +56,10 @@ inherited S_Windows: TS_Windows
   inherited LabelInfo: TLabel
     Size.Width = 536.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelRound: TLabel
+    Size.Width = 97.000000000000000000
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+    Text = 'Round: 99 / 99'
   end
 end
