@@ -9,7 +9,54 @@
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
     </PropertyGroup>
-    <ItemGroup Condition="'$(Platform)'=='OSX64'"/>
+    <ItemGroup Condition="'$(Platform)'=='OSX64'">
+        <DeployFile Include="english.lst" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\Contents\Resources\StartUp\</RemoteDir>
+            <RemoteName>english.lst</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Release\ScrambleGUI.entitlements" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\..\</RemoteDir>
+            <RemoteName>ScrambleGUI.entitlements</RemoteName>
+            <DeployClass>ProjectOSXEntitlements</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Release\ScrambleGUI.info.plist" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\Contents\</RemoteDir>
+            <RemoteName>Info.plist</RemoteName>
+            <DeployClass>ProjectOSXInfoPList</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSX64\Release\ScrambleGUI" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>ScrambleGUI</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\delphi_PROJECTICNS.icns" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\Contents\Resources\</RemoteDir>
+            <RemoteName>ScrambleGUI.icns</RemoteName>
+            <DeployClass>ProjectOSXResource</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Win32'">
         <DeployFile Include="Win32\Debug\ScrambleGUI.exe" Condition="'$(Config)'=='Debug'">
             <RemoteDir>ScrambleGUI\</RemoteDir>
@@ -25,6 +72,60 @@
     <ItemGroup Condition="'$(Platform)'=='Android64'"/>
     <ItemGroup Condition="'$(Platform)'=='Android'"/>
     <ItemGroup Condition="'$(Platform)'=='OSXARM64'">
+        <DeployFile Include="OSXARM64\Debug\ScrambleGUI.entitlements" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>ScrambleGUI.app\..\</RemoteDir>
+            <RemoteName>ScrambleGUI.entitlements</RemoteName>
+            <DeployClass>ProjectOSXEntitlements</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="english.lst" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>ScrambleGUI.app\Contents\Resources\StartUp\</RemoteDir>
+            <RemoteName>english.lst</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="english.lst" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\Contents\Resources\StartUp\</RemoteDir>
+            <RemoteName>english.lst</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="OSXARM64\Release\ScrambleGUI.entitlements" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\..\</RemoteDir>
+            <RemoteName>ScrambleGUI.entitlements</RemoteName>
+            <DeployClass>ProjectOSXEntitlements</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\delphi_PROJECTICNS.icns" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>ScrambleGUI.app\Contents\Resources\</RemoteDir>
+            <RemoteName>ScrambleGUI.icns</RemoteName>
+            <DeployClass>ProjectOSXResource</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\delphi_PROJECTICNS.icns" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\Contents\Resources\</RemoteDir>
+            <RemoteName>ScrambleGUI.icns</RemoteName>
+            <DeployClass>ProjectOSXResource</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="OSXARM64\Debug\ScrambleGUI" Condition="'$(Config)'=='Debug'">
             <RemoteDir>ScrambleGUI.app\Contents\MacOS\</RemoteDir>
             <RemoteName>ScrambleGUI</RemoteName>
@@ -44,25 +145,7 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="OSXARM64\Debug\ScrambleGUI.entitlements" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>ScrambleGUI.app\..\</RemoteDir>
-            <RemoteName>ScrambleGUI.entitlements</RemoteName>
-            <DeployClass>ProjectOSXEntitlements</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="english.lst" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>ScrambleGUI.app\Contents\Resources\StartUp\</RemoteDir>
-            <RemoteName>english.lst</RemoteName>
-            <DeployClass>ProjectFile</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="OSXARM64\Debug\ScrambleGUI.info.plist" Condition="'$(Config)'=='Debug'">
+        <DeployFile Include="OSXARM64\Release\ScrambleGUI.info.plist" Condition="'$(Config)'=='Release'">
             <RemoteDir>ScrambleGUI.app\Contents\</RemoteDir>
             <RemoteName>Info.plist</RemoteName>
             <DeployClass>ProjectOSXInfoPList</DeployClass>
@@ -71,10 +154,20 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\bin\delphi_PROJECTICNS.icns" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>ScrambleGUI.app\Contents\Resources\</RemoteDir>
-            <RemoteName>ScrambleGUI.icns</RemoteName>
-            <DeployClass>ProjectOSXResource</DeployClass>
+        <DeployFile Include="OSXARM64\Release\ScrambleGUI" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>ScrambleGUI</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="OSXARM64\Debug\ScrambleGUI.info.plist" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>ScrambleGUI.app\Contents\</RemoteDir>
+            <RemoteName>Info.plist</RemoteName>
+            <DeployClass>ProjectOSXInfoPList</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
