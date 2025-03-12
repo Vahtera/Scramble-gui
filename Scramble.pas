@@ -242,13 +242,17 @@ begin
   StartRound();
 end;
 
+function IsFinalTurn(): boolean;
+begin
+  Result := CurrentRound = NumRounds;
+end;
 
 procedure TS.ButtonHintClick(Sender: TObject);
 var
   hint: string;
 begin
   hint := Copy(Answer, 1, CurrentRound);
-  if CurrentRound = Turns then
+  if CurrentRound > NumRounds then
   begin
     S.LabelInfo.Text := 'The correct word was: ' + Answer;
     Points := 0;
@@ -290,7 +294,7 @@ var
   ans: boolean;
 begin
   ans := CheckAnswer(S.EditAnswer.Text);
-  if CurrentRound = Turns then
+  if CurrentRound > Turns then
   begin
     ShowPoints;
     S.LabelInfo.Text := 'Round Over! Sorry! The correct word was: ' + Answer;
@@ -308,6 +312,11 @@ begin
     begin
       S.LabelInfo.Text := 'Incorrect.';
       CurrentRound := CurrentRound + 1;
+      if CurrentRound > Turns then
+      begin
+        S.LabelInfo.Text := 'Incorrect. The correct word was: ' + Answer;
+        RoundOver;
+      end;
       ShowTurns;
     end;
   end;
