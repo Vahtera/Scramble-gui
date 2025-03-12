@@ -53,6 +53,7 @@ implementation
 
 {$R *.fmx}
 {$R *.Windows.fmx MSWINDOWS}
+{$R *.Macintosh.fmx MACOS}
 
 procedure LoadWords(FileName: string);
 begin

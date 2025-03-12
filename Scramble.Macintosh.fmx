@@ -1,0 +1,24 @@
+inherited S_Macintosh: TS_Macintosh
+  DesignerMasterStyle = 0
+  inherited LabelWordDisplay: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited EditAnswer: TEdit
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+  end
+  inherited LabelPoints: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelTurns: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelPlayer: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelInfo: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelRound: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+end
