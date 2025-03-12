@@ -5,7 +5,7 @@ object S: TS
   BorderStyle = Single
   Caption = 'Scramble'
   ClientHeight = 192
-  ClientWidth = 640
+  ClientWidth = 642
   Position = Designed
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -143,10 +143,17 @@ object S: TS
     Text = 'Player: 99'
     TabOrder = 11
   end
+  object Rectangle1: TRectangle
+    Align = MostBottom
+    Position.Y = 147.000000000000000000
+    Size.Width = 642.000000000000000000
+    Size.Height = 45.000000000000000000
+    Size.PlatformDefault = False
+  end
   object LabelInfo: TLabel
     StyledSettings = [Family, FontColor]
-    Position.X = 8.000000000000000000
-    Position.Y = 165.000000000000000000
+    Position.X = 23.000000000000000000
+    Position.Y = 160.000000000000000000
     Size.Width = 209.000000000000000000
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False

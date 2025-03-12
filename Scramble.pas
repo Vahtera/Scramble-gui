@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Menus,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit, FMX.Objects;
 
 type
   TS = class(TForm)
@@ -26,6 +26,7 @@ type
     Panel1: TPanel;
     LabelPlayer: TLabel;
     LabelInfo: TLabel;
+    Rectangle1: TRectangle;
     procedure MenuExitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonRollClick(Sender: TObject);
@@ -112,7 +113,16 @@ begin
 end;
 
 procedure EndGame();
+var
+  message: string;
+  I: Integer;
 begin
+  message := 'Final scores:' + sLineBreak + sLineBreak;
+  for I := 1 to NumPlayers do
+    begin
+      message := message + 'Player ' + IntToStr(I) + ': ' + IntToStr(PlayerScores[I-1]) + sLineBreak;
+    end;
+  ShowMessage(message);
   S.LabelPoints.Text := 'Points: -';
   S.LabelTurns.Text := 'Turn - / -';
   S.LabelPlayer.Text := 'Player: -';
@@ -146,7 +156,6 @@ begin
   Scrambled := ShuffleWord(Answer);
 
   S.LabelWordDisplay.Text := AnsiUpperCase(AddSpaces(Scrambled));
-//  S.EditAnswer.Text := Answer;
   Points := Length(Answer);
 end;
 
@@ -207,7 +216,7 @@ begin
     Points := 0;
     ShowPoints;
     ShowTurns;
-    RoundOver();
+    RoundOver;
   end
   else
   begin
@@ -248,9 +257,9 @@ begin
     else
     begin
       S.LabelInfo.Text := 'Incorrect.';
+      CurrentRound := CurrentRound + 1;
+      ShowTurns;
     end;
-    CurrentRound := CurrentRound + 1;
-    ShowTurns;
   end;
 end;
 
@@ -267,7 +276,7 @@ begin
   S.ButtonHint.Enabled := False;
   S.ClientWidth := 640;
   S.ClientHeight := 190;
-//  S.StatusBar1.
+  S.LabelWordDisplay.Text := 'Scramble'+ sLineBreak + 'Copyright (c) 2025 Anna Vahtera.';
 end;
 
 procedure TS.MenuExitClick(Sender: TObject);

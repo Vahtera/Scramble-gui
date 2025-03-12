@@ -2,6 +2,7 @@ inherited S_Windows: TS_Windows
   Left = 1370
   Top = 524
   ClientHeight = 190
+  ClientWidth = 641
   Left = 1370
   Top = 524
   DesignerMasterStyle = 0
@@ -17,7 +18,7 @@ inherited S_Windows: TS_Windows
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
   inherited ButtonRoll: TButton
-    Position.Y = 149.000000000000000000
+    Position.Y = 106.000000000000000000
   end
   inherited EditAnswer: TEdit
     TextSettings.Font.StyleExt = {00060000000000000004000000}
@@ -41,6 +42,10 @@ inherited S_Windows: TS_Windows
   inherited LabelPlayer: TLabel
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Player: -'
+  end
+  inherited Rectangle1: TRectangle
+    Position.Y = 145.000000000000000000
+    Size.Width = 641.000000000000000000
   end
   inherited LabelInfo: TLabel
     Size.Width = 536.000000000000000000
