@@ -326,7 +326,7 @@ end;
 
 procedure TS.FormCreate(Sender: TObject);
 var
-  ListFile, path: string;
+  ListFile: string;
 begin
   AppPath := ExtractFilePath(ParamStr(0));
   Randomize;

@@ -136,15 +136,6 @@
             <Overwrite>True</Overwrite>
             <Required>True</Required>
         </DeployFile>
-        <DeployFile Include="OSXARM64\Debug\ScrambleGUI.dSYM" Condition="'$(Config)'=='Debug'">
-            <RemoteDir>ScrambleGUI.app\..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF\</RemoteDir>
-            <RemoteName>ScrambleGUI</RemoteName>
-            <DeployClass>ProjectOSXDebug</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="OSXARM64\Release\ScrambleGUI.info.plist" Condition="'$(Config)'=='Release'">
             <RemoteDir>ScrambleGUI.app\Contents\</RemoteDir>
             <RemoteName>Info.plist</RemoteName>
