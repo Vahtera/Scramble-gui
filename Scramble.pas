@@ -305,7 +305,7 @@ procedure TS.ButtonSubmitClick(Sender: TObject);
 var
   ans: boolean;
 begin
-  ans := CheckAnswer(S.EditAnswer.Text);
+  ans := CheckAnswer(Trim(S.EditAnswer.Text));
   if CurrentRound > Turns then
   begin
     ShowPoints;

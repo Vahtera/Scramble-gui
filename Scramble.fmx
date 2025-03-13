@@ -159,6 +159,7 @@ object S: TS
     StyledSettings = [Family, FontColor]
   end
   object ButtonSubmit: TButton
+    Default = True
     Position.X = 193.000000000000000000
     Position.Y = 105.000000000000000000
     Size.Width = 80.000000000000000000

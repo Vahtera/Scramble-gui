@@ -12,16 +12,10 @@ inherited S_Windows: TS_Windows
   inherited MainMenu1: TMainMenu
     Left = 512
     Top = 105
-    inherited MenuFile: TMenuItem [0]
-      inherited MenuExit: TMenuItem [0]
+    inherited MenuFile: TMenuItem
+      inherited MenuExit: TMenuItem
         Text = 'E&xit'
       end
-      inherited MenuAbout: TMenuItem [1]
-      end
-    end
-    inherited MenuSettings: TMenuItem [1]
-    end
-    inherited mnuApple: TMenuItem [2]
     end
   end
   inherited LabelWordDisplay: TLabel
