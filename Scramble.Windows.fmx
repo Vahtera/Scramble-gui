@@ -17,18 +17,6 @@ inherited S_Windows: TS_Windows
         Text = 'E&xit'
       end
     end
-    inherited MenuSettings: TMenuItem
-      inherited MenuRounds: TMenuItem
-        inherited MenuRound3: TMenuItem [0]
-        end
-        inherited MenuRound1: TMenuItem [2]
-        end
-        inherited MenuRound5: TMenuItem [3]
-        end
-        inherited MenuRound4: TMenuItem [4]
-        end
-      end
-    end
   end
   inherited LabelWordDisplay: TLabel
     Position.Y = 33.000000000000000000

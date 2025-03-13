@@ -79,11 +79,11 @@ procedure LoadWords(FileName: string);
 begin
   Words := TStringList.Create;
   try
-    Words.LoadFromFile(FileName);
+    Words.LoadFromFile(FileName, Tencoding.Unicode);
   except
     on E: Exception do
     begin
-      Writeln('Error loading file: ', E.Message);
+      ShowMessage('Error loading file: ' + E.Message);
       Application.Terminate;
     end;
   end;
@@ -323,6 +323,8 @@ begin
 end;
 
 procedure TS.FormCreate(Sender: TObject);
+var
+  path: string;
 begin
   Randomize;
   Language := 'English';
@@ -330,7 +332,13 @@ begin
   Points := 5;
   NumPlayers := 2;
   NumRounds := 2;
-  LoadWords(Language + '.lst');
+  {$IFDEF MACOS}
+    path := '../Resources/StartUp/';
+  {$ENDIF}
+  {$IFDEF WINDOWS}
+    path := './';
+  {$ENDIF}
+  LoadWords(path + AnsiLowerCase(Language) + '.lst');
   S.EditAnswer.Text := '';
   S.ButtonSubmit.Enabled := False;
   S.ButtonHint.Enabled := False;

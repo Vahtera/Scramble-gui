@@ -175,7 +175,26 @@
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Win64'">
+        <DeployFile Include="Win64\Release\ScrambleGUI.exe" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ScrambleGUI\</RemoteDir>
+            <RemoteName>ScrambleGUI.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
         <DeployFile Include="english.lst" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>ScrambleGUI\</RemoteDir>
+            <RemoteName>english.lst</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="english.lst" Condition="'$(Config)'=='Release'">
             <RemoteDir>ScrambleGUI\</RemoteDir>
             <RemoteName>english.lst</RemoteName>
             <DeployClass>ProjectFile</DeployClass>
