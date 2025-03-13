@@ -86,12 +86,9 @@ implementation
 {$R *.Macintosh.fmx MACOS}
 
 procedure LoadWords(FileName: string);
-//r
-//test: string;
+{ Load words from file }
 begin
   Words := TStringList.Create;
-//test := System.SysUtils.ExpandFileName(FileName);
-//ShowMessage(test);
   try
     Words.LoadFromFile(FileName);
   except
@@ -104,6 +101,7 @@ begin
 end;
 
 function AddSpaces(const S: string): string;
+{ Add spaces between characters in a string }
 var
   I: Integer;
 begin
@@ -114,6 +112,7 @@ begin
 end;
 
 function CheckAnswer(const S: string): boolean;
+{ Check if answer is correct }
 begin
   if AnsiLowerCase(S) = AnsiLowerCase(Answer) then
     Result := True
@@ -122,6 +121,7 @@ begin
 end;
 
 function ShuffleWord(const Word: string): string;
+{ Scramble the letters in a word}
 var
   Chars: array of Char;
   i, r: Integer;
@@ -148,22 +148,26 @@ begin
 end;
 
 procedure ShowPoints();
+{ Update point display }
 begin
   S.LabelPoints.Text := 'Points: ' + IntToStr(Points);
 end;
 
 procedure ShowTurns();
+{ Update Turn display }
 begin
     S.LabelTurns.Text := 'Turn: ' + IntToStr(CurrentRound) + ' / ' + IntToStr(Turns);
     S.LabelRound.Text := 'Round: ' + IntToStr(CurrentTurn)+ ' / ' + IntToStr(NumRounds);
 end;
 
 procedure ShowPlayers();
+{ Update Player display }
 begin
   S.LabelPlayer.Text := 'Player: ' + IntToStr(CurrentPlayer)+ ' / ' + IntToStr(NumPlayers);
 end;
 
 procedure DisplayWord();
+{ Randomize and display the word }
 begin
   S.LabelWordDisplay.Text := '';
   Answer := Words[Random(Words.Count)];
@@ -174,6 +178,7 @@ begin
 end;
 
 procedure StartRound();
+{ Start a round of the game }
 begin
   CurrentRound := 1;
   CurrentPlayer := 1;
@@ -188,6 +193,7 @@ begin
 end;
 
 procedure EndGame();
+{ End game round, and check if game over }
 var
   message: string;
   I: Integer;
@@ -223,6 +229,7 @@ begin
 end;
 
 procedure RoundOver();
+{ End round check if new round starts, or game over }
 begin
     Points := 0;
     CurrentRound := 1;
@@ -246,6 +253,7 @@ end;
 
 
 procedure StartTurn();
+{ Start a new Turn }
 begin
   if CurrentTurn > NumRounds then
   EndGame
@@ -255,11 +263,13 @@ begin
 end;
 
 function IsFinalTurn(): boolean;
+{ Check if last turn }
 begin
   Result := CurrentRound = NumRounds;
 end;
 
 procedure TS.ButtonHintClick(Sender: TObject);
+{ Request a hint, and adjust score }
 var
   hint: string;
 begin
@@ -284,6 +294,7 @@ begin
 end;
 
 procedure TS.ButtonRollClick(Sender: TObject);
+{ Start the game }
 var
   players, I: Integer;
 begin
@@ -302,6 +313,7 @@ begin
 end;
 
 procedure TS.ButtonSubmitClick(Sender: TObject);
+{ Submit answer }
 var
   ans: boolean;
 begin
@@ -336,11 +348,13 @@ end;
 
 procedure TS.FormCreate(Sender: TObject);
 var
-  ListFile: string;
+  ListFile, FName: string;
 begin
-  AppPath := ExtractFilePath(ParamStr(0));
+
+  AppPath := ExtractFilePath(ParamStr(0)); // get application path
   Randomize;
-  //ShowMessage(AppPath);
+
+  { Initialize some values }
   Language := 'English';
   Turns := 3;
   Points := 5;
@@ -350,15 +364,19 @@ begin
   { Settings for running on a macOS machine. }
   {$IFDEF MACOS}
     SetLength(AppPath, Length(AppPath) - 6); // To get rid of 'MacOS/' folder where the binary is located.
-    AppPath := AppPath + 'Resources/StartUp/'; // Add the correct path to resources.
+    AppPath := TPath.Combine(AppPath, 'Resources/StartUp/'); // Add the correct path to resources.
   {$ENDIF}
 
   { Show/Hide menuitems based on OS. }
   mnuApple.Visible := (TOSVersion.Platform = pfMacOS);
   MenuExit.Visible := (TOSVersion.Platform <> pfMacOS);
 
-  ListFile := AppPath + AnsiLowerCase(Language) + '.lst';
+  { Get Filename from Language, and then load the corresponding wordlist }
+  FName := AnsiLowerCase(Language) + '.lst';
+  ListFile := TPath.Combine(AppPath, FName);
   LoadWords(ListFile);
+
+  { Set app default state }
   S.EditAnswer.Text := '';
   S.ButtonSubmit.Enabled := False;
   S.ButtonHint.Enabled := False;
