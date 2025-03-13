@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Menus,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit, FMX.Objects;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit, FMX.Objects, System.IOUtils;
 
 type
   TS = class(TForm)
@@ -62,7 +62,7 @@ type
 var
   S: TS;
   Words: TStringList;
-  Language: string;
+  Language, AppPath, ResourcePath: string;
   CurrentPlayer, CurrentRound, CurrentTurn, NumPlayers, NumRounds, Turns, Points, i, j, k, MaxPoints, Winner: Integer;
   PlayerScores: array of Integer;
   Answer, Scrambled, InputWord: string;
@@ -76,8 +76,12 @@ implementation
 {$R *.Macintosh.fmx MACOS}
 
 procedure LoadWords(FileName: string);
+//r
+//test: string;
 begin
   Words := TStringList.Create;
+//test := System.SysUtils.ExpandFileName(FileName);
+//ShowMessage(test);
   try
     Words.LoadFromFile(FileName);
   except
@@ -117,7 +121,6 @@ begin
   for i := 1 to Length(Word) do
     Chars[i - 1] := Word[i];
 
-  Randomize;
   for i := High(Chars) downto 1 do
   begin
     r := Random(i + 1); // generate a random index between 0 and i
@@ -152,7 +155,6 @@ end;
 
 procedure DisplayWord();
 begin
-  Randomize;
   S.LabelWordDisplay.Text := '';
   Answer := Words[Random(Words.Count)];
   Scrambled := ShuffleWord(Answer);
@@ -324,21 +326,26 @@ end;
 
 procedure TS.FormCreate(Sender: TObject);
 var
-  path: string;
+  ListFile, path: string;
 begin
+  AppPath := ExtractFilePath(ParamStr(0));
   Randomize;
+  //ShowMessage(AppPath);
   Language := 'English';
   Turns := 3;
   Points := 5;
   NumPlayers := 2;
   NumRounds := 2;
+
+  { Settings for running on a macOS machine. }
   {$IFDEF MACOS}
-    path := '../Resources/StartUp/';
+    SetLength(AppPath, Length(AppPath) - 6); // To get rid of 'MacOS/' folder where the binary is located.
+    AppPath := AppPath + 'Resources/StartUp/'; // Add the correct path to resources.
+    S.MenuExit.Visible := False;
   {$ENDIF}
-  {$IFDEF WINDOWS}
-    path := './';
-  {$ENDIF}
-  LoadWords(path + AnsiLowerCase(Language) + '.lst');
+
+  ListFile := AppPath + AnsiLowerCase(Language) + '.lst';
+  LoadWords(ListFile);
   S.EditAnswer.Text := '';
   S.ButtonSubmit.Enabled := False;
   S.ButtonHint.Enabled := False;

@@ -1,0 +1,31 @@
+inherited S_iPhone55in: TS_iPhone55in
+  ClientHeight = 716
+  ClientWidth = 414
+  DesignerMasterStyle = 0
+  inherited LabelWordDisplay: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited EditAnswer: TEdit
+    TextSettings.Font.StyleExt = {00060000000000000004000000}
+    Size.Height = 30.000000000000000000
+  end
+  inherited LabelPoints: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelTurns: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelPlayer: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited Rectangle1: TRectangle
+    Position.Y = 671.000000000000000000
+    Size.Width = 414.000000000000000000
+  end
+  inherited LabelInfo: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited LabelRound: TLabel
+    TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+end
