@@ -10,15 +10,19 @@ inherited S_Macintosh: TS_Macintosh
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
   inherited LabelTurns: TLabel
+    Position.X = 201.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
   inherited LabelPlayer: TLabel
+    Position.X = 105.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
   inherited LabelInfo: TLabel
+    Size.Width = 609.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
   inherited LabelRound: TLabel
+    Size.Width = 89.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
 end

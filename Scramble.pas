@@ -79,7 +79,7 @@ procedure LoadWords(FileName: string);
 begin
   Words := TStringList.Create;
   try
-    Words.LoadFromFile(FileName, Tencoding.Unicode);
+    Words.LoadFromFile(FileName);
   except
     on E: Exception do
     begin

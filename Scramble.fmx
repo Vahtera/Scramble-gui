@@ -159,19 +159,20 @@ object S: TS
   end
   object LabelPoints: TLabel
     StyledSettings = [Family, FontColor]
-    Position.X = 170.000000000000000000
+    Position.X = 544.000000000000000000
     Position.Y = -2.000000000000000000
     Size.Width = 88.000000000000000000
     Size.Height = 26.000000000000000000
     Size.PlatformDefault = False
     TextSettings.Font.Size = 14.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
+    TextSettings.HorzAlign = Trailing
     Text = 'Points: 999'
     TabOrder = 13
   end
   object LabelTurns: TLabel
     StyledSettings = [Family, FontColor]
-    Position.X = 250.000000000000000000
+    Position.X = 170.000000000000000000
     Position.Y = -1.000000000000000000
     Size.Width = 72.000000000000000000
     Size.Height = 25.000000000000000000
