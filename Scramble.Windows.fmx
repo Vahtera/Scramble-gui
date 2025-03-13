@@ -12,10 +12,16 @@ inherited S_Windows: TS_Windows
   inherited MainMenu1: TMainMenu
     Left = 512
     Top = 105
-    inherited MenuFile: TMenuItem
-      inherited MenuExit: TMenuItem
+    inherited MenuFile: TMenuItem [0]
+      inherited MenuExit: TMenuItem [0]
         Text = 'E&xit'
       end
+      inherited MenuAbout: TMenuItem [1]
+      end
+    end
+    inherited MenuSettings: TMenuItem [1]
+    end
+    inherited mnuApple: TMenuItem [2]
     end
   end
   inherited LabelWordDisplay: TLabel
@@ -64,5 +70,10 @@ inherited S_Windows: TS_Windows
     Size.Width = 97.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Round: 99 / 99'
+  end
+  inherited ActionList1: TActionList
+    inherited FileExit1: TFileExit
+      ImageIndex = 43
+    end
   end
 end

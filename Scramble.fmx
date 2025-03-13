@@ -25,8 +25,34 @@ object S: TS
   object MainMenu1: TMainMenu
     Left = 368
     Top = 104
+    object mnuApple: TMenuItem
+      Text = 'mnuApple'
+      object MenuItem2: TMenuItem
+        Action = FileHideApp1
+        Locked = True
+        ImageIndex = -1
+      end
+      object MenuItem3: TMenuItem
+        Action = FileHideAppOthers1
+        Locked = True
+        ImageIndex = -1
+      end
+      object MenuItem4: TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object MenuItem5: TMenuItem
+        Action = FileExit1
+        Locked = True
+        ImageIndex = 43
+      end
+    end
     object MenuFile: TMenuItem
       Text = '&File'
+      object MenuAbout: TMenuItem
+        Locked = True
+        Text = 'About...'
+      end
       object MenuExit: TMenuItem
         Locked = True
         Text = 'E&xit Application'
@@ -93,9 +119,6 @@ object S: TS
           OnClick = MenuRound5Click
         end
       end
-    end
-    object MenuItem6: TMenuItem
-      Text = '&About'
     end
   end
   object LabelWordDisplay: TLabel
@@ -224,5 +247,23 @@ object S: TS
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Round: 99'
     TabOrder = 11
+  end
+  object ActionList1: TActionList
+    Left = 480
+    Top = 112
+    object FileExit1: TFileExit
+      Category = 'File'
+      Hint = 'Quit|Quits the application'
+      ImageIndex = 43
+      ImageIndex = 43
+    end
+    object FileHideApp1: TFileHideApp
+      Category = 'File'
+      Hint = 'Hide|Hide current application'
+    end
+    object FileHideAppOthers1: TFileHideAppOthers
+      Category = 'File'
+      Hint = 'Hide Others|Hide all other applications'
+    end
   end
 end

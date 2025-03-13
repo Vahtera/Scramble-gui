@@ -5,7 +5,8 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Menus,
-  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit, FMX.Objects, System.IOUtils;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit, FMX.Objects, System.IOUtils,
+  FMX.StdActns, System.Actions, FMX.ActnList;
 
 type
   TS = class(TForm)
@@ -15,7 +16,6 @@ type
     MenuExit: TMenuItem;
     MenuPlayers: TMenuItem;
     MenuRounds: TMenuItem;
-    MenuItem6: TMenuItem;
     LabelWordDisplay: TLabel;
     ButtonRoll: TButton;
     EditAnswer: TEdit;
@@ -38,6 +38,16 @@ type
     MenuRound1: TMenuItem;
     MenuRound5: TMenuItem;
     MenuRound4: TMenuItem;
+    ActionList1: TActionList;
+    FileExit1: TFileExit;
+    FileHideApp1: TFileHideApp;
+    FileHideAppOthers1: TFileHideAppOthers;
+    mnuApple: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
+    MenuItem5: TMenuItem;
+    MenuAbout: TMenuItem;
     procedure MenuExitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonRollClick(Sender: TObject);
@@ -341,8 +351,11 @@ begin
   {$IFDEF MACOS}
     SetLength(AppPath, Length(AppPath) - 6); // To get rid of 'MacOS/' folder where the binary is located.
     AppPath := AppPath + 'Resources/StartUp/'; // Add the correct path to resources.
-    S.MenuExit.Visible := False;
   {$ENDIF}
+
+  { Show/Hide menuitems based on OS. }
+  mnuApple.Visible := (TOSVersion.Platform = pfMacOS);
+  MenuExit.Visible := (TOSVersion.Platform <> pfMacOS);
 
   ListFile := AppPath + AnsiLowerCase(Language) + '.lst';
   LoadWords(ListFile);

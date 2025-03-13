@@ -1,5 +1,17 @@
 inherited S_Macintosh: TS_Macintosh
   DesignerMasterStyle = 0
+  inherited MainMenu1: TMainMenu
+    inherited MenuFile: TMenuItem [0]
+      inherited MenuExit: TMenuItem [0]
+      end
+      inherited MenuAbout: TMenuItem [1]
+      end
+    end
+    inherited MenuSettings: TMenuItem [1]
+    end
+    inherited mnuApple: TMenuItem [2]
+    end
+  end
   inherited LabelWordDisplay: TLabel
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
@@ -24,5 +36,10 @@ inherited S_Macintosh: TS_Macintosh
   inherited LabelRound: TLabel
     Size.Width = 89.000000000000000000
     TextSettings.Font.StyleExt = {00070000000000000004000000}
+  end
+  inherited ActionList1: TActionList
+    inherited FileExit1: TFileExit
+      ImageIndex = 43
+    end
   end
 end
