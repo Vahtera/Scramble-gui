@@ -65,6 +65,15 @@ inherited S_Windows: TS_Windows
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Round: 99 / 99'
   end
+  inherited PanelAbout: TPanel
+    inherited Label1: TLabel
+      TextSettings.Font.StyleExt = {00090000000000000004000000}
+    end
+    inherited ButtonAboutOK: TButton [1]
+    end
+    inherited LabelAboutText: TLabel [2]
+    end
+  end
   inherited ActionList1: TActionList
     inherited FileExit1: TFileExit
       ImageIndex = 43

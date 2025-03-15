@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Menus,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.Edit, FMX.Objects, System.IOUtils,
-  FMX.StdActns, System.Actions, FMX.ActnList;
+  FMX.StdActns, System.Actions, FMX.ActnList, System.SyncObjs;
 
 type
   TS = class(TForm)
@@ -48,6 +48,10 @@ type
     MenuItem4: TMenuItem;
     MenuItem5: TMenuItem;
     MenuAbout: TMenuItem;
+    PanelAbout: TPanel;
+    Label1: TLabel;
+    ButtonAboutOK: TButton;
+    LabelAboutText: TLabel;
     procedure MenuExitClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ButtonRollClick(Sender: TObject);
@@ -63,6 +67,8 @@ type
     procedure MenuRound2Click(Sender: TObject);
     procedure MenuRound3Click(Sender: TObject);
     procedure MenuRound5Click(Sender: TObject);
+    procedure ButtonAboutOKClick(Sender: TObject);
+    procedure MenuAboutClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -77,6 +83,7 @@ var
   PlayerScores: array of Integer;
   Answer, Scrambled, InputWord: string;
   LangText: array[0..1] of string = ('English', 'Finnish');
+  BGColor: TAlphaColor;
 
 
 implementation
@@ -268,6 +275,11 @@ begin
   Result := CurrentRound = NumRounds;
 end;
 
+procedure TS.ButtonAboutOKClick(Sender: TObject);
+begin
+  S.PanelAbout.Visible := False;
+end;
+
 procedure TS.ButtonHintClick(Sender: TObject);
 { Request a hint, and adjust score }
 var
@@ -317,6 +329,7 @@ procedure TS.ButtonSubmitClick(Sender: TObject);
 var
   ans: boolean;
 begin
+  S.Rectangle1.Fill.Color := BGColor;
   ans := CheckAnswer(Trim(S.EditAnswer.Text));
   if CurrentRound > Turns then
   begin
@@ -335,6 +348,7 @@ begin
     else
     begin
       S.LabelInfo.Text := 'Incorrect.';
+      S.Rectangle1.Fill.Color := TAlphaColors.Red;
       CurrentRound := CurrentRound + 1;
       if CurrentRound > Turns then
       begin
@@ -355,6 +369,8 @@ begin
   Randomize;
 
   { Initialize some values }
+  S.PanelAbout.Visible := False;
+  S.PanelAbout.Align := TAlignLayout.Contents;
   Language := 'English';
   Turns := 3;
   Points := 5;
@@ -377,6 +393,7 @@ begin
   LoadWords(ListFile);
 
   { Set app default state }
+  BGColor := S.Rectangle1.Fill.Color;
   S.EditAnswer.Text := '';
   S.ButtonSubmit.Enabled := False;
   S.ButtonHint.Enabled := False;
@@ -386,7 +403,12 @@ begin
   ShowPlayers;
   ShowTurns;
   ShowPoints;
+end;
 
+procedure TS.MenuAboutClick(Sender: TObject);
+begin
+  S.PanelAbout.Visible := True;
+  S.LabelAboutText.Text := '  Version: ';
 end;
 
 procedure TS.MenuExitClick(Sender: TObject);

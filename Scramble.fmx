@@ -4,8 +4,8 @@ object S: TS
   BorderIcons = [biSystemMenu]
   BorderStyle = Single
   Caption = 'Scramble'
-  ClientHeight = 192
-  ClientWidth = 642
+  ClientHeight = 606
+  ClientWidth = 1108
   Position = Designed
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -52,6 +52,7 @@ object S: TS
       object MenuAbout: TMenuItem
         Locked = True
         Text = 'About...'
+        OnClick = MenuAboutClick
       end
       object MenuExit: TMenuItem
         Locked = True
@@ -220,8 +221,8 @@ object S: TS
   end
   object Rectangle1: TRectangle
     Align = MostBottom
-    Position.Y = 147.000000000000000000
-    Size.Width = 642.000000000000000000
+    Position.Y = 561.000000000000000000
+    Size.Width = 1108.000000000000000000
     Size.Height = 45.000000000000000000
     Size.PlatformDefault = False
   end
@@ -248,6 +249,46 @@ object S: TS
     TextSettings.Font.StyleExt = {00070000000000000004000000}
     Text = 'Round: 99'
     TabOrder = 11
+  end
+  object PanelAbout: TPanel
+    Position.X = 170.000000000000000000
+    Position.Y = 307.000000000000000000
+    Size.Width = 632.000000000000000000
+    Size.Height = 158.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 19
+    object Label1: TLabel
+      Align = MostTop
+      StyledSettings = [Family, FontColor]
+      Size.Width = 632.000000000000000000
+      Size.Height = 41.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 22.000000000000000000
+      TextSettings.Font.StyleExt = {00090000000000000004000000}
+      TextSettings.HorzAlign = Center
+      Text = 'Scramble'
+      TabOrder = 0
+    end
+    object LabelAboutText: TLabel
+      Align = Client
+      Size.Width = 632.000000000000000000
+      Size.Height = 95.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.VertAlign = Leading
+      Text = 'LabelAboutText'
+      TabOrder = 2
+    end
+    object ButtonAboutOK: TButton
+      Align = MostBottom
+      Position.Y = 136.000000000000000000
+      Size.Width = 632.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'OK'
+      TextSettings.Trimming = None
+      OnClick = ButtonAboutOKClick
+    end
   end
   object ActionList1: TActionList
     Left = 480
