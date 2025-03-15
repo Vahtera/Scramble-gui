@@ -257,23 +257,14 @@ object S: TS
     Size.Height = 158.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 19
-    object Label1: TLabel
-      Align = MostTop
-      StyledSettings = [Family, FontColor]
-      Size.Width = 632.000000000000000000
-      Size.Height = 41.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.Font.Size = 22.000000000000000000
-      TextSettings.Font.StyleExt = {00090000000000000004000000}
-      TextSettings.HorzAlign = Center
-      Text = 'Scramble'
-      TabOrder = 0
-    end
     object LabelAboutText: TLabel
       Align = Client
+      StyledSettings = [Family, FontColor]
       Size.Width = 632.000000000000000000
-      Size.Height = 95.000000000000000000
+      Size.Height = 136.000000000000000000
       Size.PlatformDefault = False
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
       TextSettings.VertAlign = Leading
       Text = 'LabelAboutText'
       TabOrder = 2
@@ -288,6 +279,20 @@ object S: TS
       Text = 'OK'
       TextSettings.Trimming = None
       OnClick = ButtonAboutOKClick
+    end
+    object LabelTitle: TLabel
+      StyledSettings = [Family, FontColor]
+      Position.X = 256.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 216.000000000000000000
+      Size.Height = 57.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 36.000000000000000000
+      TextSettings.Font.StyleExt = {00090000000000000004000000}
+      TextSettings.HorzAlign = Center
+      TextSettings.VertAlign = Trailing
+      Text = 'Scramble'
+      TabOrder = 0
     end
   end
   object ActionList1: TActionList

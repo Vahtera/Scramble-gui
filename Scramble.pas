@@ -49,7 +49,7 @@ type
     MenuItem5: TMenuItem;
     MenuAbout: TMenuItem;
     PanelAbout: TPanel;
-    Label1: TLabel;
+    LabelTitle: TLabel;
     ButtonAboutOK: TButton;
     LabelAboutText: TLabel;
     procedure MenuExitClick(Sender: TObject);
@@ -91,6 +91,8 @@ implementation
 {$R *.fmx}
 {$R *.Windows.fmx MSWINDOWS}
 {$R *.Macintosh.fmx MACOS}
+
+{$include CommitInfo}
 
 procedure LoadWords(FileName: string);
 { Load words from file }
@@ -406,9 +408,21 @@ begin
 end;
 
 procedure TS.MenuAboutClick(Sender: TObject);
+var
+ pad: string;
 begin
+  pad := '    ';
+  S.LabelTitle.Position.Y := 0;
+  S.LabelTitle.Position.X := S.PanelAbout.Width - S.LabelTitle.Width;
   S.PanelAbout.Visible := True;
-  S.LabelAboutText.Text := '  Version: ';
+  S.LabelAboutText.Text := sLineBreak +
+  pad + 'Version: ' + IntToStr(GetVersion) + sLineBreak +
+  pad + 'Copyright © 2025 Anna Vahtera' + sLineBreak +
+  pad + 'Licensed under AGPL-3.0' + sLineBreak + sLineBreak +
+  pad + 'A word guessing game. You are presented with a scrambled version of a word.' + sLineBreak +
+  pad + 'Your job is to guess which word it is.' + sLineBreak +
+  pad + 'Points are awarded based on the length of the word. Using hints will reduce points.'
+  ;
 end;
 
 procedure TS.MenuExitClick(Sender: TObject);

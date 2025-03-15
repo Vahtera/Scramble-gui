@@ -26,12 +26,11 @@ inherited S_Macintosh: TS_Macintosh
     TextSettings.Font.StyleExt = {00070000000000000004000000}
   end
   inherited PanelAbout: TPanel
-    inherited Label1: TLabel
+    inherited LabelTitle: TLabel [0]
       TextSettings.Font.StyleExt = {00090000000000000004000000}
     end
-    inherited ButtonAboutOK: TButton [1]
-    end
     inherited LabelAboutText: TLabel [2]
+      TextSettings.Font.StyleExt = {00060000000000000004000000}
     end
   end
   inherited ActionList1: TActionList
