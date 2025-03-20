@@ -1,4 +1,4 @@
 function GetVersion (): integer;
 begin
-  Result := 23;
+  Result := 25;
 end;
